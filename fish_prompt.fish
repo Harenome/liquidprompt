@@ -306,7 +306,7 @@ function _lp_init --description 'Initialize liquidprompt'
         # Return the average system temperature we get through the sensors command
         set -l count 0
         set -l temperature 0
-        set -l tempregex ":\s*[^-]([0-9]+(\.[0-9]+)?)\s*°"
+        set -l tempregex ":\s*\+?([0-9]+(\.[0-9]+)?)\s*°"
         for i in (sensors | grep -E "^(Core|temp).*$tempregex" | sed -r "s/.*$tempregex.*/\1/g")
             set temperature (math "$temperature + $i")
             set count (math "$count + 1")
